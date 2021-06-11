@@ -12,8 +12,6 @@
  */
 
 
-// NO ANDA, REVISAR
-
 import java.util.*;
 
 
@@ -56,7 +54,15 @@ public class Ejercicio7 {
         int fin = input.nextInt();
 
         fizzBuzz = fizzBuzzFunction(inicio, fin);
-        System.out.println(fizzBuzz);
+        
+        int cont = 0;
+
+        for (String fizz: fizzBuzz) {
+            
+            System.out.println(fizzBuzz[cont]);
+            cont++;
+        }
+
 
         input.close();
     }    
