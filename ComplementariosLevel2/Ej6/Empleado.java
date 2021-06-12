@@ -10,25 +10,57 @@ public class Empleado {
 		
 	}
 
-	public Empleado(int dni, String nombre, String apellido){
-		this.dni = dni;
+	public Empleado(String nombYApel, int dni, int horasTrabajadas, int valorPorHora){
 		this.nombYApell = nombYApell;
+		this.dni = dni;
 		this.horasTrabajadas = horasTrabajadas;
 		this.valorPorHora = valorPorHora;
 	}
 	
-	// reescribir lo del constructor
+	//Setters
+	public void setNombYAp(String nombYApell){
+		this.nombYApell = nombYApell;
+	}
+
+	public void setDni(int dni){
+		this.dni = dni;
+	}
+
+	public void setHorasT(int horasTrabajadas){
+		this.horasTrabajadas = horasTrabajadas;
+	}
+
+	public void setValor(int valorPorHora){
+		this.valorPorHora = valorPorHora;
+	}
+
+	//Getters
+	public String getNombYAp(){
+		return nombYApell;
+	}
+
+	public int getDni(){
+		return dni;
+	}
+
+	public int getHorasT(){
+		return horasTrabajadas;
+	}
+
+	public int getValor(){
+		return valorPorHora;
+	}
+
+	public int sueldoCalculado(){
+		return this.horasTrabajadas * this.valorPorHora;
+	}
 
 	@Override
 	public String toString() {
-		return String.valueOf(this.dni) 
-		+ " - " + this.nombYApell 
-		+ " - " + this.horasTrabajadas 
-		+ " - " + this.valorPorHora;
-	}
-
-	public int calcularSueldo(int horasTrabajadas, int valorPorHora) {
-		return this.horasTrabajadas * this.valorPorHora;
+		return this.nombYApell 
+		+ " - " + String.valueOf(this.dni)
+		+ " - " + String.valueOf(this.horasTrabajadas) 
+		+ " - " + String.valueOf(this.valorPorHora);
 	}
 
 }

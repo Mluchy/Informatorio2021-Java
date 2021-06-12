@@ -13,6 +13,7 @@
  *
  */
 
+import java.util.*;
 
 public class Ejercicio6 {
     
@@ -20,44 +21,53 @@ public class Ejercicio6 {
 
         Scanner input = new Scanner(System.in);
 
-        Empleado emp = new Empleado();
-
         int resp = 0;
-
 
         System.out.println("Cargar los datos del empleado");
 
-        do {
+        while (resp == 0) {
+            
+            Empleado emp = new Empleado();
             System.out.print("Nombre y Apellido: ");
-            emp.nombYApell = input.nextLine();
+            emp.setNombYAp(input.nextLine());
             System.out.print("DNI: ");
-            emp.dni = input.nextLine();
-            System.out.print("Horas Trabajadas:: ");
-            emp.horasTrabajadas = input.nextLine();
+            emp.setDni(input.nextInt());
+            System.out.print("Horas Trabajadas: ");
+            emp.setHorasT(input.nextInt());
             System.out.print("Valor por Hora: ");
-            emp.valorPorHora = input.nextLine();
+            emp.setValor(input.nextInt());
 
+            empleados.add(emp);
 
-            System.out.println("Desea agregar otro empleado? \n\t(presione [1] para salir) ");
+            System.out.println("Desea agregar otro empleado? \n\t(presione [0] para continuar o [1] para salir) ");
             resp = input.nextInt();
+            input.nextLine();
 
-        } while (resp == 0);
+        }
 
         input.close();
+    }
+
+    public static void cargarMap(Set<Empleado> empleados, Map<Integer, Integer> sueldoXEmp) {
+
+        for (Empleado empleado: empleados) {
+           sueldoXEmp.put(empleado.getDni(), empleado.sueldoCalculado());
+        } 
     }
 
     public static void main(String[] args){
         
         Set<Empleado> empleados = new HashSet<>();
-        Map sueldoXEmp = new HashMap();
-
+        
+        Map<Integer, Integer> sueldoXEmp = new HashMap<>();
+        
         cargarSet(empleados);
 
+        cargarMap(empleados ,sueldoXEmp);
         
-        for (Set empleado: empleados) {
-            System.out.println(empleado);
+        for (Integer key: sueldoXEmp.keySet()){  
+            System.out.println("DNI: " + key + "; Sueldo: " + sueldoXEmp.get(key));
         } 
-
 
     }    
 }
