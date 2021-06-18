@@ -1,21 +1,23 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Empleado {
 
 	private String nombre;
 	private String apellido;
-	private int fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private float sueldo;
-	
 
 	// Constructor
 	public Empleado(){
 		
 	}
 
-	public Empleado(String nombre, String apellido, int fechaNacimiento, float sueldo){
+	public Empleado(String nombre, String apellido, String fechaNacimiento, String sueldo){
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.fechaNacimiento = fechaNacimiento;
-		this.sueldo = sueldo;
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		this.sueldo = Float.parseFloat(sueldo);
 	}
 	
 	//Setters
@@ -27,14 +29,13 @@ public class Empleado {
 		this.apellido = apellido;
 	}
 
-	public void setFechaNacimiento(int fechaNacimiento){
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFechaNacimiento(String fechaNacimiento){
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	}
 
-	public void setSueldo(float sueldo){
-		this.sueldo = sueldo;
+	public void setSueldo(String sueldo){
+		this.sueldo = Float.parseFloat(sueldo);
 	}
-
 
 	//Getters
 	public String getNombre(){
@@ -45,14 +46,13 @@ public class Empleado {
 		return apellido;
 	}
 
-	public getFechaNacimiento(){
+	public LocalDate getFechaNacimiento(){
 		return fechaNacimiento;
 	}
 
 	public float getSueldo(){
 		return sueldo;
 	}
-
 
 	@Override
 	public String toString() {
