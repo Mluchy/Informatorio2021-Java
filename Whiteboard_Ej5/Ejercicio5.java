@@ -49,28 +49,42 @@ public class Ejercicio5 {
 	public static void masJoven(List<Empleado> empleados) {
 
 		empleados.sort(Comparator.comparing(Empleado::getFechaNacimiento));
-		System.out.println(empleados.get(0));	
-
+		System.out.println(String.format("Nombre: %s \nApellido: %s \nEdad: %d \nSueldo: %.2f",
+			empleados.get(empleados.size() - 1).getNombre(), 
+			empleados.get(empleados.size() - 1).getApellido(),
+			empleados.get(empleados.size() - 1).calcularEdad(empleados.get(empleados.size() - 1).getFechaNacimiento()),
+			empleados.get(empleados.size() - 1).getSueldo()));
+	
 	}
 
 	public static void masViejo(List<Empleado> empleados) {
 
 		empleados.sort(Comparator.comparing(Empleado::getFechaNacimiento));
-		System.out.println(empleados.get(empleados.size() - 1));	
-
+		System.out.println(String.format("Nombre: %s \nApellido: %s \nEdad: %d \nSueldo: %.2f",
+			empleados.get(0).getNombre(), 
+			empleados.get(0).getApellido(),
+			empleados.get(0).calcularEdad(empleados.get(0).getFechaNacimiento()),
+			empleados.get(0).getSueldo()));
+	
 	}
 
 	public static void ganaMas(List<Empleado> empleados) {
 
 		empleados.sort(Comparator.comparing(Empleado::getSueldo));
-		System.out.println(empleados.get(empleados.size() - 1));	
+		System.out.println(String.format("Nombre: %s \nApellido: %s \nSueldo: %.2f",
+			empleados.get(empleados.size() - 1).getNombre(), 
+			empleados.get(empleados.size() - 1).getApellido(),
+			empleados.get(empleados.size() - 1).getSueldo()));	
 
 	}
 
 	public static void ganaMenos(List<Empleado> empleados) {
 
 		empleados.sort(Comparator.comparing(Empleado::getSueldo));
-		System.out.println(empleados.get(0));	
+		System.out.println(String.format("Nombre: %s \nApellido: %s \nSueldo: %.2f",
+			empleados.get(0).getNombre(), 
+			empleados.get(0).getApellido(),
+			empleados.get(0).getSueldo()));	
 
 	}
 

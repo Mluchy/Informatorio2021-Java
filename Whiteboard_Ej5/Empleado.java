@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.Period;
 
 public class Empleado {
 
@@ -60,6 +61,12 @@ public class Empleado {
 		+ " - " + this.apellido 
 		+ " - " + String.valueOf(this.fechaNacimiento)
 		+ " - " + String.valueOf(this.sueldo);
+	}
+
+	public Integer calcularEdad(LocalDate fechaNacimiento) {
+		Period edad = Period.between(fechaNacimiento, LocalDate.now());
+		return edad.getYears();
+    	   
 	}
 
 }
